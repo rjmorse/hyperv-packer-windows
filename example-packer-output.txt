@@ -1,0 +1,162 @@
+PS C:\code\hyperv-packer-windows> .\Start-Pipeline.ps1
+Starting at 9/16/2019 11:01:00 AM
+Generating unattend ISOs for 2016
+
+
+    Directory: C:\code\hyperv-packer-windows\iso
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        9/16/2019  11:01 AM        1245184 windows_server_2016_unattend.iso
+-a----        9/16/2019  11:01 AM        1245184 windows_server_2019_unattend.iso
+Running validation of 2016 and 2019 Packer config files
+Time now: 9/16/2019 11:01:00 AM
+Validating 2016
+Template validated successfully.
+Time now: 9/16/2019 11:01:05 AM
+Time now: 9/16/2019 11:01:05 AM
+Validation complete
+Starting Packer build for 2016
+Time now: 9/16/2019 11:01:05 AM
+hyperv-iso output will be in this color.
+
+==> hyperv-iso: Creating build directory...
+==> hyperv-iso: Deleting build directory...
+Build 'hyperv-iso' errored: Output directory exists: output-hyperv-iso
+
+Use the force flag to delete it prior to building.
+
+==> Some builds didn't complete successfully and had errors:
+--> hyperv-iso: Output directory exists: output-hyperv-iso
+
+Use the force flag to delete it prior to building.
+
+==> Builds finished but no artifacts were created.
+Time now: 9/16/2019 11:01:10 AM
+Job ran in 0 minutes, 9 seconds
+
+
+PS C:\code\hyperv-packer-windows> .\Start-Pipeline.ps1
+Starting at 9/16/2019 11:29:36 AM
+Generating unattend ISOs for 2016
+
+
+    Directory: C:\code\hyperv-packer-windows\iso
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        9/16/2019  11:29 AM        1245184 windows_server_2016_unattend.iso
+-a----        9/16/2019  11:29 AM        1245184 windows_server_2019_unattend.iso
+Running validation of 2016 and 2019 Packer config files
+Time now: 9/16/2019 11:29:37 AM
+Validating 2016
+Template validated successfully.
+Time now: 9/16/2019 11:29:40 AM
+Time now: 9/16/2019 11:29:40 AM
+Validation complete
+Starting Packer build for 2016
+Time now: 9/16/2019 11:29:40 AM
+hyperv-iso output will be in this color.
+
+==> hyperv-iso: Creating build directory...
+==> hyperv-iso: Retrieving ISO
+==> hyperv-iso: Trying ./iso/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO
+==> hyperv-iso: Trying ./iso/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO?checksum=sha256%3A1CE702A578A3CB1AC3D
+14873980838590F06D5B7101C5DAACCBAC9D73F1FB50F
+==> hyperv-iso: ./iso/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO?checksum=sha256%3A1CE702A578A3CB1AC3D1487398
+0838590F06D5B7101C5DAACCBAC9D73F1FB50F => C:\code\hyperv-packer-windows\packer_cache\baf6e49e390297fe7949535d29be84c0b492d9e1.
+iso
+==> hyperv-iso: Creating switch 'packer-hyperv-iso' if required...
+==> hyperv-iso:     switch 'packer-hyperv-iso' already exists. Will not delete on cleanup...
+==> hyperv-iso: Creating virtual machine...
+==> hyperv-iso: Enabling Integration Service...
+==> hyperv-iso: Setting boot drive to os dvd drive C:\code\hyperv-packer-windows\packer_cache\baf6e49e390297fe7949535d29be84c0
+b492d9e1.iso ...
+==> hyperv-iso: Mounting os dvd drive C:\code\hyperv-packer-windows\packer_cache\baf6e49e390297fe7949535d29be84c0b492d9e1.iso
+...
+==> hyperv-iso: Skipping mounting Integration Services Setup Disk...
+==> hyperv-iso: Mounting secondary DVD images...
+==> hyperv-iso: Mounting secondary dvd drive ./iso/windows_server_2016_unattend.iso ...
+==> hyperv-iso: Configuring vlan...
+==> hyperv-iso: Determine Host IP for HyperV machine...
+==> hyperv-iso: Host IP for the HyperV machine: 10.211.55.18
+==> hyperv-iso: Attempting to connect with vmconnect...
+==> hyperv-iso: Starting the virtual machine...
+==> hyperv-iso: Typing the boot command...
+==> hyperv-iso: Waiting for WinRM to become available...
+==> hyperv-iso: #< CLIXML
+    hyperv-iso: WinRM connected.
+==> hyperv-iso: <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04"><Obj S="progress" RefId="0"><TN RefId="0"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj><Obj S="progress" RefId="1"><TNRef RefId="0" /><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>
+==> hyperv-iso: Connected to WinRM!
+==> hyperv-iso: Provisioning with windows-shell...
+==> hyperv-iso: Provisioning with shell script: ./scripts/enable-rdp.bat
+    hyperv-iso:
+    hyperv-iso: C:\Users\vagrant>netsh advfirewall firewall add rule name="Open Port 3389" dir=in action=allow protocol=TCP localport=3389
+    hyperv-iso: Ok.
+    hyperv-iso:
+    hyperv-iso:
+    hyperv-iso: C:\Users\vagrant>reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    hyperv-iso: The operation completed successfully.
+==> hyperv-iso: Restarting Machine
+==> hyperv-iso: Waiting for machine to restart...
+==> hyperv-iso: A system shutdown is in progress.(1115)
+==> hyperv-iso: A system shutdown is in progress.(1115)
+    hyperv-iso: VAGRANT-2016 restarted.
+==> hyperv-iso: #< CLIXML
+==> hyperv-iso: <Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04"><Obj S="progress" RefId="0"><TN RefId="0"><T>System.Management.Automation.PSCustomObject</T><T>System.Object</T></TN><MS><I64 N="SourceId">1</I64><PR N="Record"><AV>Preparing modules for first use.</AV><AI>0</AI><Nil /><PI>-1</PI><PC>-1</PC><T>Completed</T><SR>-1</SR><SD> </SD></PR></MS></Obj></Objs>
+==> hyperv-iso: Machine successfully restarted, moving on
+==> hyperv-iso: Provisioning with windows-shell...
+==> hyperv-iso: Provisioning with shell script: ./scripts/set-winrm-automatic.bat
+    hyperv-iso:
+    hyperv-iso: C:\Users\vagrant>echo Set WinRM start type to auto
+    hyperv-iso: Set WinRM start type to auto
+    hyperv-iso:
+    hyperv-iso: C:\Users\vagrant>sc config winrm start= auto
+    hyperv-iso: [SC] ChangeServiceConfig SUCCESS
+==> hyperv-iso: Gracefully halting virtual machine...
+==> hyperv-iso: Waiting for vm to be powered down...
+==> hyperv-iso: Unmount/delete secondary dvd drives...
+==> hyperv-iso: Delete secondary dvd drives controller 0 location 2 ...
+==> hyperv-iso: Unmount/delete Integration Services dvd drive...
+==> hyperv-iso: Unmount/delete os dvd drive...
+==> hyperv-iso: Delete os dvd drives controller 0 location 1 ...
+==> hyperv-iso: Compacting disks...
+    hyperv-iso: Compacting disk: WindowsServer2016UEFI.vhdx
+    hyperv-iso: Disk size is unchanged
+==> hyperv-iso: Exporting virtual machine...
+==> hyperv-iso: Collating build artifacts...
+==> hyperv-iso: Disconnecting from vmconnect...
+==> hyperv-iso: Unregistering and deleting virtual machine...
+==> hyperv-iso: Deleting build directory...
+==> hyperv-iso: Running post-processor: vagrant
+==> hyperv-iso (vagrant): Creating Vagrant box for 'hyperv' provider
+    hyperv-iso (vagrant): Copying: output-hyperv-iso\Virtual Hard Disks\WindowsServer2016UEFI.vhdx
+    hyperv-iso (vagrant): Copied output-hyperv-iso\Virtual Hard Disks\WindowsServer2016UEFI.vhdx to C:\Users\rmorse\AppData\Local\Temp\packer093575715\Virtual Hard Disks\WindowsServer2016UEFI.vhdx
+    hyperv-iso (vagrant): Copying: output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.VMRS
+    hyperv-iso (vagrant): Copied output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.VMRS to C:\Users\rmorse\AppData\Local\Temp\packer093575715\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.VMRS
+    hyperv-iso (vagrant): Copying: output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmcx
+    hyperv-iso (vagrant): Copied output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmcx to C:\Users\rmorse\AppData\Local\Temp\packer093575715\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmcx
+    hyperv-iso (vagrant): Copying: output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmgs
+    hyperv-iso (vagrant): Copied output-hyperv-iso\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmgs to C:\Users\rmorse\AppData\Local\Temp\packer093575715\Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmgs
+    hyperv-iso (vagrant): Copying: output-hyperv-iso\Virtual Machines\box.xml
+    hyperv-iso (vagrant): Copied output-hyperv-iso\Virtual Machines\box.xml to C:\Users\rmorse\AppData\Local\Temp\packer093575715\Virtual Machines\box.xml
+    hyperv-iso (vagrant): Using custom Vagrantfile: vagrantfile-windows_2016.template
+    hyperv-iso (vagrant): Compressing: Vagrantfile
+    hyperv-iso (vagrant): Compressing: Virtual Hard Disks\WindowsServer2016UEFI.vhdx
+    hyperv-iso (vagrant): Compressing: Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.VMRS
+    hyperv-iso (vagrant): Compressing: Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmcx
+    hyperv-iso (vagrant): Compressing: Virtual Machines\9D789AC7-803B-4F44-AA10-542B7268ABEC.vmgs
+    hyperv-iso (vagrant): Compressing: Virtual Machines\box.xml
+    hyperv-iso (vagrant): Compressing: metadata.json
+Build 'hyperv-iso' finished.
+
+==> Builds finished. The artifacts of successful builds are:
+--> hyperv-iso: VM files in directory: output-hyperv-iso
+--> hyperv-iso: 'hyperv' provider box: windows_server_2016_uefi_hyperv.box
+Time now: 9/16/2019 11:47:22 AM
+Job ran in 17 minutes, 45 seconds
+
+
+PS C:\code\hyperv-packer-windows>
