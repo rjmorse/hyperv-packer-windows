@@ -2,17 +2,27 @@
 
 
 $isoList = @(
-    @{
-        FileName="./iso/windows_server_2016_unattend.iso";
-        Files=@(
-            "./sysprep_answer_files/2016_uefi/Autounattend.xml",
-            "./scripts/disable-winrm.ps1",
-            "./scripts/enable-winrm.ps1",
-            "./scripts/sysprep.bat",
-            "./scripts/unattend.xml"
-        )
-    },
-    @{
+  @{
+    FileName="./iso/windows_server_2016_unattend.iso";
+    Files=@(
+        "./sysprep_answer_files/2016_uefi/Autounattend.xml",
+        "./scripts/disable-winrm.ps1",
+        "./scripts/enable-winrm.ps1",
+        "./scripts/sysprep.bat",
+        "./scripts/unattend.xml"
+    )
+  },
+  @{
+    FileName="./iso/windows_server_2012r2_unattend.iso";
+    Files=@(
+        "./sysprep_answer_files/2012r2_uefi/Autounattend.xml",
+        "./scripts/disable-winrm.ps1",
+        "./scripts/enable-winrm.ps1",
+        "./scripts/sysprep.bat",
+        "./scripts/unattend.xml"
+    )
+  },
+  @{
       FileName="./iso/windows_server_2019_unattend.iso";
       Files=@(
           "./sysprep_answer_files/2019_uefi/Autounattend.xml",
@@ -127,5 +137,5 @@ public class ISOFile
 }
 
 $isoList | foreach-object {
-    New-IsoFile -Path $_.FileName -Source $_.Files -Force -Media "CDR"
+    New-IsoFile -Path $_.FileName -Source $_.Files -Force:$true -Media "CDR"
 }
